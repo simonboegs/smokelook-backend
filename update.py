@@ -7,3 +7,4 @@ url = f.json()['run_urls'][0]
 
 with open('recent.json','w') as json_file:
     json.dump({'recent': url}, json_file)
+print('recent updated')
