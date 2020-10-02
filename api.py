@@ -1,5 +1,5 @@
 import flask
-import requests
+import json 
 from flask_cors import CORS
 
 
@@ -9,8 +9,8 @@ app.config["DEBUG"] = True
 
 @app.route('/',methods=['GET'])
 def home():
-    f = requests.get('https://tools.airfire.org/websky/v1/api/runs/standard/GFS-0.15deg/')
-    recent = f.json()['run_urls'][0]
-    return {'recent': recent}
+    with open('recent.json') as f:
+        data = json.load(f)
+    return {'recent': data['recent']}
 
 app.run()
